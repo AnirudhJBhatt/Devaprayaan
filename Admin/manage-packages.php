@@ -1,33 +1,95 @@
 <?php
-    include '../includes/db.php'; // DB connection
+    include '../includes/db.php'; 
 
     // Handle delete
-    if(isset($_GET['delete'])){
-        $id = $_GET['delete'];
-        $conn->query("DELETE FROM packages WHERE id=$id");
-        header('Location: admin_panel.php');
+    if (isset($_GET['delete'])) {
+        $id = (int) $_GET['delete'];
+        $sql = "DELETE FROM packages WHERE id = $id";
+        if (mysqli_query($conn, $sql)) {
+            echo "<script>
+                    alert('Package deleted successfully');
+                    window.location.href = 'manage-packages.php';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Error deleting package: " . mysqli_error($conn) . "');
+                    window.location.href = 'manage-packages.php';
+                  </script>";
+        }
+        exit();
     }
 
     // Handle add package
-    if(isset($_POST['add_package'])){
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $price = $_POST['price'];
-        $duration = $_POST['duration'];
-        $highlights = $_POST['highlights'];
+    if (isset($_POST['add_package'])) {
+        $title       = mysqli_real_escape_string($conn, $_POST['title']);
+        $description = mysqli_real_escape_string($conn, $_POST['description']);
+        $price       = mysqli_real_escape_string($conn, $_POST['price']);
+        $duration    = mysqli_real_escape_string($conn, $_POST['duration']);
+        $location    = mysqli_real_escape_string($conn, $_POST['location']);
 
-        // Handle image upload
-        $image = $_FILES['image']['name'];
-        $tmp_name = $_FILES['image']['tmp_name'];
-        move_uploaded_file($tmp_name, "uploads/$image");
+        // Image upload
+        // $image = '';
+        // if (!empty($_FILES['image']['name'])) {
+        //     $image = time() . '_' . basename($_FILES['image']['name']); // unique filename
+        //     $tmp_name = $_FILES['image']['tmp_name'];
+        //     move_uploaded_file($tmp_name, "uploads/$image");
+        // }
 
-        $conn->query("INSERT INTO packages (title, description, price, duration, images, highlights) VALUES ('$title','$description','$price','$duration','$image','$highlights')");
-        header('Location: admin_panel.php');
+        $sql = "INSERT INTO packages (title, description, price, duration, location) 
+                VALUES ('$title', '$description', '$price', '$duration', '$location')";
+        if (mysqli_query($conn, $sql)) {
+            echo "<script>
+                    alert('Package added successfully');
+                    window.location.href = 'manage-packages.php';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Error adding package: " . mysqli_error($conn) . "');
+                    window.location.href = 'manage-packages.php';
+                  </script>";
+        }
+        exit();
+    }
+
+    // Handle edit package
+    if (isset($_POST['edit_package'])) {
+        $id          = (int) $_POST['edit_id'];
+        $title       = mysqli_real_escape_string($conn, $_POST['title']);
+        $description = mysqli_real_escape_string($conn, $_POST['description']);
+        $price       = mysqli_real_escape_string($conn, $_POST['price']);
+        $duration    = mysqli_real_escape_string($conn, $_POST['duration']);
+        $location    = mysqli_real_escape_string($conn, $_POST['location']);
+        // $current_img = $_POST['current_image'] ?? '';
+
+        // Image upload (keep old if none uploaded)
+        // $image = $current_img;
+        // if (!empty($_FILES['image']['name'])) {
+        //     $image = time() . '_' . basename($_FILES['image']['name']);
+        //     $tmp_name = $_FILES['image']['tmp_name'];
+        //     move_uploaded_file($tmp_name, "uploads/$image");
+        // }
+
+        $sql = "UPDATE packages SET title='$title', description='$description', price='$price', duration='$duration', 
+                    location='$location' WHERE id=$id";
+        if (mysqli_query($conn, $sql)) {
+            echo "<script>
+                    alert('Package updated successfully');
+                    window.location.href = 'manage-packages.php';
+                  </script>";
+        } else {
+            echo "<script>
+                    alert('Error updating package: " . mysqli_error($conn) . "');
+                    window.location.href = 'manage-packages.php';
+                  </script>";
+        }
+        exit();
     }
 
     // Fetch packages
-    $packages = $conn->query("SELECT * FROM packages");
+    $sql = "SELECT * FROM packages";
+    $packages = mysqli_query($conn, $sql);
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -138,7 +200,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while($row = $packages->fetch_assoc()): ?>
+                        <?php while($row = mysqli_fetch_assoc($packages)): ?>
                         <tr>
                             <td>
                                 <?= $row['id'] ?>
@@ -146,7 +208,7 @@
                             <td>
                                 <?= $row['title'] ?>
                             </td>
-                            <td>$
+                            <td>Rs
                                 <?= $row['price'] ?>
                             </td>
                             <td>
@@ -166,7 +228,7 @@
                                 <div class="modal fade" id="editModal<?= $row['id'] ?>" tabindex="-1"
                                     aria-labelledby="editModalLabel<?= $row['id'] ?>" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
-                                        <form method="POST" enctype="multipart/form-data" action="manage-bookings.php">
+                                        <form method="POST" enctype="multipart/form-data" action="manage-packages.php">
                                             <input type="hidden" name="edit_id" value="<?= $row['id'] ?>">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -200,11 +262,6 @@
                                                                 value="<?= htmlspecialchars($row['location']) ?>"
                                                                 required>
                                                         </div>
-                                                        <div class="col-md-8">
-                                                            <label class="form-label">Description</label>
-                                                            <textarea name="description" class="form-control" rows="3"
-                                                                required><?= htmlspecialchars($row['description']) ?></textarea>
-                                                        </div>
                                                         <div class="col-md-6">
                                                             <label class="form-label">Image</label>
                                                             <input type="file" name="image" class="form-control">
@@ -228,7 +285,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <a href="admin_panel.php?delete=<?= $row['id'] ?>" class="btn btn-sm btn-danger"
+                                <a href="manage-packages.php?delete=<?= $row['id'] ?>" class="btn btn-sm btn-danger"
                                     onclick="return confirm('Delete this package?')"><i class="fas fa-trash-alt"></i>
                                     Delete</a>
                             </td>

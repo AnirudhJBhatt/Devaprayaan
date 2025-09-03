@@ -14,22 +14,47 @@
         }
     </style>
 </head>
+<?php
+    include 'includes/db.php';
+    if(isset($_POST['login'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        
+        $query = "SELECT * FROM users WHERE Phone='$username' AND Password='$password'";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        if(mysqli_num_rows($result) < 0) {
+            echo "<script>alert('Invalid username or password');</script>";
+        }
+        else{
+            session_start();
+            if($row['Role'] =='Admin'){
+                $_SESSION['Role'] = $row['Role'];
+                header("Location: ./admin/dashboard.php");
+            }
+            else{
+                $_SESSION['User_ID'] = $row['User_ID'];
+                header("Location: ./user/dashboard.php");
+            }            
+        }
+    }
+?>
+
 
 <body class="d-flex align-items-center justify-content-center">
-
     <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
         <div class="text-center mb-2">
             <i class="fas fa-user-circle fa-3x text-primary mb-2"></i>
             <h3 class="fw-bold">Login</h3>
         </div>
 
-        <form>
+        <form method="POST" action="">
             <!-- Mobile -->
             <div class="mb-3">
                 <label class="form-label">Mobile</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="Enter mobile number" required>
+                    <input type="text" class="form-control" name="username" placeholder="Enter mobile number" required>
                 </div>
             </div>
             <!-- Password -->
@@ -37,15 +62,15 @@
                 <label class="form-label">Password</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Enter password" required>
+                    <input type="password" class="form-control" name="password" placeholder="Enter password" required>
                 </div>
             </div>
             <!-- Forgot password -->
             <div class="mb-3 text-end">
-                <a href="forgot-password.html" class="text-decoration-none">Forgot password?</a>
+                <a href="forgot-password.php" class="text-decoration-none">Forgot password?</a>
             </div>
             <!-- Login button -->
-            <button type="submit" class="btn btn-primary w-100">Login</button>
+            <button type="submit" name="login" class="btn btn-primary w-100">Login</button>
         </form>
 
         <div class="text-center mt-3">

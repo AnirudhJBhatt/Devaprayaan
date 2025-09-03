@@ -3,10 +3,13 @@ body {
     background: #f8fafc;
     scroll-behavior: smooth;
     transition: background 0.4s, color 0.4s;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Navbar */
-.navbar{
+.navbar {
     background: rgba(78, 84, 200, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -42,7 +45,7 @@ body {
     width: 100%;
 }
 
-/* Dark mode toggle button */
+/* Dark mode toggle button
 .dark-toggle-btn {
     background: none;
     border: none;
@@ -88,12 +91,13 @@ body {
 
 .dark-toggle-btn:focus {
     outline: 2px solid #ffd700;
-}
+} */
 
 /* Carousel */
 #bannerCarousel .carousel-item {
     height: 90vh;
     background-size: cover;
+
     background-position: center;
     position: relative;
     border-radius: 0.8rem;
@@ -187,7 +191,7 @@ section .text-center h3 {
 }
 
 /* Footer */
-footer {
+/* footer {
     background: linear-gradient(120deg, #4e54c8, #8f94fb, #232526);
     background-size: 400% 400%;
     animation: gradientBG 10s ease infinite;
@@ -195,6 +199,29 @@ footer {
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     transition: background 0.4s, color 0.4s;
+} */
+
+footer {
+    background-color: rgba(78, 84, 200, 0.95);
+}
+
+footer a {
+    color: #fff;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+.social-icon i {
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.social-icon i:hover {
+    color: #ffc107;
 }
 
 @keyframes gradientBG {
@@ -239,7 +266,7 @@ footer .fab:hover {
     transform: scale(1.2);
 }
 
-/* --- DARK MODE STYLES --- */
+/* --- DARK MODE STYLES ---
 body.dark-mode {
     background: #181a1b;
     color: #e3e3e3;
@@ -338,4 +365,4 @@ body.dark-mode {
 .dark-mode .carousel-caption p {
     color: #ffd700;
     text-shadow: 0 2px 8px #232526;
-}
+} */

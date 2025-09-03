@@ -1,10 +1,10 @@
-<footer id="contact" class="py-3 mt-5 text-light">
+    <footer class="py-3 text-light mt-auto">
         <div class="container text-center">
-            <h6 class="text-uppercase fw-bold mb-4 text-warning">Contact Info</h6>
+            <h6 class="text-uppercase fw-bold mb-4">Contact Info</h6>
             <div class="d-flex flex-wrap justify-content-center gap-4 mb-3">
-                <span><i class="fas fa-map-marker-alt me-2"></i> 5th Avenue, #06 lane street, NY - 62617</span>
-                <span><i class="fas fa-phone me-2"></i> <a href="tel:+1212344567" class="text-light text-decoration-none">+1 (21) 234 4567</a></span>
-                <span><i class="fas fa-envelope me-2"></i> <a href="mailto:info@example.com" class="text-light text-decoration-none">info@example.com</a></span>
+                <span><i class="fas fa-map-marker-alt me-2"></i>5th Avenue, #06 lane street, NY - 62617</span>
+                <span><i class="fas fa-phone me-2"></i><a href="tel:+1212344567">+1 (21) 234 4567</a></span>
+                <span><i class="fas fa-envelope me-2"></i><a href="mailto:info@example.com">info@example.com</a></span>
             </div>
             <div class="mt-3">
                 <a href="#" class="me-2 social-icon"><i class="fab fa-facebook-f"></i></a>

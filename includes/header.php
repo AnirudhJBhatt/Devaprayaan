@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- AOS (Animate on Scroll) -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
  
@@ -28,14 +28,6 @@
                     <li class="nav-item"><a class="nav-link" href="gallery.php">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">My Account</a></li>
-                            <li><a class="dropdown-item" href="#">My Bookings</a></li>
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
-                        </ul>
-                    </li>
                     <li class="nav-item">
                         <!-- Dark mode toggle button -->
                         <button class="dark-toggle-btn" id="darkModeToggle" aria-label="Toggle dark mode">

@@ -22,12 +22,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.php">Manage Bookings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="booking.php">Manage Users</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.php">View Bookings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Settings</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../admin/dashboard.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../admin/manage-users.php">Manage Users</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../admin/manage-packages.php">Manage Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../admin/booking-history.php">View Bookings</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="#contact">Settings</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
