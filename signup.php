@@ -26,7 +26,7 @@
         <form>
             <!-- Full Name -->
             <div class="mb-3">
-                <label class="form-label">Full Name</label>
+                <label class="form-label">Name</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                     <input type="text" class="form-control" placeholder="Enter full name" required>
@@ -34,7 +34,7 @@
             </div>
             <!-- Email -->
             <div class="mb-3">
-                <label class="form-label">Email</label>
+                <label class="form-label">Gender</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                     <input type="email" class="form-control" placeholder="Enter email" required>
@@ -42,7 +42,7 @@
             </div>
             <!-- Username -->
             <div class="mb-3">
-                <label class="form-label">Username</label>
+                <label class="form-label">Phone</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-user-circle"></i></span>
                     <input type="text" class="form-control" placeholder="Choose a username" required>

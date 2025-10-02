@@ -1,9 +1,10 @@
 <?php
     session_start();
     if(!isset($_SESSION['User_ID'])){ 
-        header("Location: login.php"); 
+        header("Location: ../index.php"); 
         exit(); 
     }
+
     $User_ID = $_SESSION['User_ID'];
     include '../includes/db.php';
     $query = "SELECT * FROM users WHERE User_ID = '$User_ID'";
@@ -16,7 +17,7 @@
         $gender   = mysqli_real_escape_string($conn, $_POST['gender']);
         $phone    = mysqli_real_escape_string($conn, $_POST['phone']);
         $email    = mysqli_real_escape_string($conn, $_POST['email']);
-        $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : $_POST['current_password'];
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
 
         $sql = "UPDATE users SET name='$name', gender='$gender', phone='$phone', email='$email', password='$password' 
                 WHERE User_ID=$id";
@@ -80,26 +81,42 @@
 
     <main class="flex-grow-1">
         <div class="container mt-5 py-5">
-            <div class="card">
-                <h3 class="mb-4">User Profile</h3>
-                <div class="profile-row"><span class="profile-label">Name:</span>
-                    <?= htmlspecialchars($user['Name']); ?>
-                </div>
-                <div class="profile-row"><span class="profile-label">Gender:</span>
-                    <?= htmlspecialchars($user['Gender']); ?>
-                </div>
-                <!-- <div class="profile-row"><span class="profile-label">Address:</span> <?= htmlspecialchars($user['Address']); ?></div> -->
-                <div class="profile-row"><span class="profile-label">Phone No:</span>
-                    <?= htmlspecialchars($user['Phone']); ?>
-                </div>
-                <div class="profile-row"><span class="profile-label">Email:</span>
-                    <?= htmlspecialchars($user['Email']); ?>
-                </div>
-                <button class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-                    <i class="fas fa-edit me-1"></i> Edit Profile
-                </button>
-            </div>
+            <div class="card shadow-lg border-0 rounded-3 p-4">
+                <div class="card-body">
+                    <!-- Profile Header -->
+                    <h3 class="text-center mb-4 text-primary">
+                        <i class="fas fa-user-circle me-2"></i> User Profile
+                    </h3>
 
+                    <!-- Profile Details -->
+                    <div class="mb-3 d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">Name:</span>
+                        <span><?= htmlspecialchars($user['Name']); ?></span>
+                    </div>
+
+                    <div class="mb-3 d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">Gender:</span>
+                        <span><?= htmlspecialchars($user['Gender']); ?></span>
+                    </div>
+
+                    <div class="mb-3 d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">Phone No:</span>
+                        <span><?= htmlspecialchars($user['Phone']); ?></span>
+                    </div>
+
+                    <div class="mb-3 d-flex justify-content-between border-bottom pb-2">
+                        <span class="fw-bold text-muted">Email:</span>
+                        <span><?= htmlspecialchars($user['Email']); ?></span>
+                    </div>
+
+                    <!-- Edit Button -->
+                    <div class="text-center mt-4">
+                        <button class="btn btn-warning px-4" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                            <i class="fas fa-edit me-2"></i> Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
             <!-- Edit Modal -->
             <div class="modal fade" id="editProfileModal" tabindex="-1">
                 <div class="modal-dialog modal-lg">
@@ -131,8 +148,8 @@
                                         <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($user['Email']) ?>" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Password (leave blank to keep same)</label>
-                                        <input type="password" name="password" class="form-control">
+                                        <label class="form-label">Password</label>
+                                        <input type="text" name="password" class="form-control" value="<?= htmlspecialchars($user['Password']) ?>" required>
                                     </div>
                                 </div>
                             </div>

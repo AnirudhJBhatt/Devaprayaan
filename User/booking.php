@@ -28,7 +28,7 @@
         </div>
         <div class="row g-4">
             <?php
-
+            include '../includes/db.php';
             $sql = "SELECT * FROM packages";
             $result = mysqli_query($conn, $sql);
 
@@ -37,7 +37,7 @@
             ?>
                 <div class="col-md-6 col-lg-4 col-xl-3" data-aos="zoom-in">
                     <div class="card h-100 position-relative">
-                        <span class="price-badge">From Rs <?php echo htmlspecialchars($row['price']); ?></span>
+                        <span class="price-badge">Rs <?php echo htmlspecialchars($row['price']); ?></span>
                         <img src="<?php echo htmlspecialchars($row['image']); ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($row['title']); ?></h5>

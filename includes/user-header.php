@@ -24,7 +24,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item"><a class="nav-link" href="../user/dashboard.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../user/booking.php">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="../user/booking.php">Tours</a></li>
+                <li class="nav-item"><a class="nav-link" href="../user/gallery.php">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="../user/contact.php">Contact Us</a></li>
 
                 <!-- User Dropdown -->
                 <li class="nav-item dropdown">
@@ -36,7 +39,6 @@
                         <li><a class="dropdown-item" href="../user/user-profile.php">My Profile</a></li>
                         <li><a class="dropdown-item" href="../user/booking-history.php">My Bookings</a></li>
                         <li><a class="dropdown-item" href="../user/transaction-history.php">My Transactions</a></li>
-                        <li><a class="dropdown-item" href="../user/settings.php">Settings</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="../logout.php">Log Out</a></li>
                     </ul>

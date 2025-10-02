@@ -53,7 +53,7 @@
     <div class="card shadow receipt-card">
         <div class="card-header text-center receipt-header py-4">
             <h2 class="mb-0">Booking Receipt</h2>
-            <p class="mb-0">Devaprayaan Tours</p>
+            <p class="mb-0">Devaprayaan Tours and Travels</p>
         </div>
         <div class="card-body p-4">
             <!-- Customer Info -->
@@ -75,7 +75,7 @@
             <h5 class="mb-3">Package Information</h5>
             <table class="table table-bordered">
                 <tr>
-                    <th>Package Name</th>
+                    <th class="w-50">Package Name</th>
                     <td><?php echo htmlspecialchars($package['title']); ?></td>
                 </tr>
                 <tr>
@@ -91,28 +91,28 @@
             <!-- Passenger Info -->
             <h5 class="mb-3">Passenger Details</h5>
             <div class="table-responsive">
-            <table class="table table-striped">
-                <thead class="table-light">
-                    <tr>
-                        <th>SL</th>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Phone</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php foreach($passengers as $i => $p): ?>
-                    <tr>
-                        <td><?php echo $i + 1; ?></td>
-                        <td><?php echo htmlspecialchars($p['passenger_name']); ?></td>
-                        <td><?php echo htmlspecialchars($p['age']); ?></td>
-                        <td><?php echo htmlspecialchars($p['gender']); ?></td>
-                        <td><?php echo htmlspecialchars($p['phone']); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
+                <table class="table table-striped">
+                    <thead class="table-light">
+                        <tr>
+                            <th>SL</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach($passengers as $i => $p): ?>
+                        <tr>
+                            <td><?php echo $i + 1; ?></td>
+                            <td><?php echo htmlspecialchars($p['passenger_name']); ?></td>
+                            <td><?php echo htmlspecialchars($p['age']); ?></td>
+                            <td><?php echo htmlspecialchars($p['gender']); ?></td>
+                            <td><?php echo htmlspecialchars($p['phone']); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
 
             <!-- Fare Info -->

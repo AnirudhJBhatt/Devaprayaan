@@ -1,7 +1,6 @@
 <?php
     session_start();
-    $user_id = $_SESSION['User_ID'] ?? null;
-    echo "Hello".$user_id;
+    $User_ID = $_SESSION['User_ID'] ?? null;
     include '../includes/db.php';
 ?>
 <!doctype html>
@@ -19,21 +18,21 @@
     <!-- Banner Carousel -->
     <div id="bannerCarousel" class="carousel slide pt-4" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image:url('assets/images/banner1.jpg');">
+            <div class="carousel-item active" style="background-image:url('../assets/images/Tirumala.jpeg');">
                 <div class="carousel-caption text-center">
                     <h3 data-aos="fade-up">Travel & Adventures</h3>
                     <p data-aos="fade-up" data-aos-delay="200">Discover amazing places at exclusive deals.</p>
                     <!-- <a class="btn btn-light mt-3" href="#tours">Explore More</a> -->
                 </div>
             </div>
-            <div class="carousel-item" style="background-image:url('assets/images/banner2.jpg');">
+            <div class="carousel-item" style="background-image:url('../assets/images/Varanasi-image.jpg');">
                 <div class="carousel-caption text-center">
                     <h3 data-aos="fade-up">Your Journey Begins</h3>
                     <p data-aos="fade-up" data-aos-delay="200">Take advantage of this amazing exclusive offers.</p>
                     <!-- <a class="btn btn-light mt-3" href="#tours">Explore More</a> -->
                 </div>
             </div>
-            <div class="carousel-item" style="background-image:url('assets/images/banner3.jpg');">
+            <div class="carousel-item" style="background-image:url('../assets/images/Dwaraka.jpeg');">
                 <div class="carousel-caption text-center">
                     <h3 data-aos="fade-up">Love and Travel</h3>
                     <p data-aos="fade-up" data-aos-delay="200">Discover amazing places at exclusive deals.</p>

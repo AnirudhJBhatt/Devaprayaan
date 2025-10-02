@@ -2,9 +2,9 @@
         <div class="container text-center">
             <h6 class="text-uppercase fw-bold mb-4">Contact Info</h6>
             <div class="d-flex flex-wrap justify-content-center gap-4 mb-3">
-                <span><i class="fas fa-map-marker-alt me-2"></i>5th Avenue, #06 lane street, NY - 62617</span>
-                <span><i class="fas fa-phone me-2"></i><a href="tel:+1212344567">+1 (21) 234 4567</a></span>
-                <span><i class="fas fa-envelope me-2"></i><a href="mailto:info@example.com">info@example.com</a></span>
+                <span><i class="fas fa-map-marker-alt me-2"></i>7/124/1A, R G Pai Road, South Cherlai, Kochi - 682002</span>
+                <span><i class="fas fa-phone me-2"></i><a href="tel:+919349612834">+91 93496 12834</a> <a href="tel:+918137879348">+91 81378 79348</a></span>
+                <span><i class="fas fa-envelope me-2"></i><a href="mailto:devaprayaantoursandtravels@gmail.com">devaprayaantoursandtravels@gmail.com</a></span>
             </div>
             <div class="mt-3">
                 <a href="#" class="me-2 social-icon"><i class="fab fa-facebook-f"></i></a>
